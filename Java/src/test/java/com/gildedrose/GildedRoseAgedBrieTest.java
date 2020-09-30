@@ -12,7 +12,7 @@ class GildedRoseAgedBrieTest {
     void testAgedBrie() {
         Item[] items = new Item[] { new Item(AGED_BRIE, 8, 5, ItemType.AGED_BRIE) };
         GildedRose app = new GildedRose(items);
-        app.updateQuality();
+        app.simulateDay();
         assertThat(app.items[0].name).isEqualTo(AGED_BRIE);
         assertThat(app.items[0].quality).isEqualTo(6);
         assertThat(app.items[0].sellIn).isEqualTo(7);
@@ -22,7 +22,7 @@ class GildedRoseAgedBrieTest {
     void testAgedBrieSellByDateIsNow() {
         Item[] items = new Item[] { new Item(AGED_BRIE, 0, 5, ItemType.AGED_BRIE) };
         GildedRose app = new GildedRose(items);
-        app.updateQuality();
+        app.simulateDay();
         assertThat(app.items[0].name).isEqualTo(AGED_BRIE);
         assertThat(app.items[0].quality).isEqualTo(7);
         assertThat(app.items[0].sellIn).isEqualTo(-1);
@@ -32,7 +32,7 @@ class GildedRoseAgedBrieTest {
     void testAgedBrieSellByDatePassed() {
         Item[] items = new Item[] { new Item(AGED_BRIE, -1, 5, ItemType.AGED_BRIE) };
         GildedRose app = new GildedRose(items);
-        app.updateQuality();
+        app.simulateDay();
         assertThat(app.items[0].name).isEqualTo(AGED_BRIE);
         assertThat(app.items[0].quality).isEqualTo(7);
         assertThat(app.items[0].sellIn).isEqualTo(-2);

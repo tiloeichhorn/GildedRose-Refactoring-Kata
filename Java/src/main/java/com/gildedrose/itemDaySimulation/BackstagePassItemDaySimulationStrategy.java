@@ -1,4 +1,9 @@
-package com.gildedrose;
+package com.gildedrose.itemDaySimulation;
+
+import com.gildedrose.GildedRose;
+import com.gildedrose.Item;
+import com.gildedrose.ItemType;
+import com.gildedrose.itemDaySimulation.ItemDaySimulationStrategy;
 
 public class BackstagePassItemDaySimulationStrategy implements ItemDaySimulationStrategy {
 

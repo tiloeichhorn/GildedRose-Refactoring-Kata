@@ -12,7 +12,7 @@ class GildedRoseBackstagePassTest {
     void testBackstagePass() {
         Item[] items = new Item[] { new Item(BACKSTAGE_PASS, 80, 5, ItemType.BACKSTAGE_PASS) };
         GildedRose app = new GildedRose(items);
-        app.updateQuality();
+        app.simulateDay();
         assertThat(app.items[0].name).isEqualTo(BACKSTAGE_PASS);
         assertThat(app.items[0].quality).isEqualTo(6);
         assertThat(app.items[0].sellIn).isEqualTo(79);
@@ -22,7 +22,7 @@ class GildedRoseBackstagePassTest {
     void testBackstagePassSellByDateIn10() {
         Item[] items = new Item[] { new Item(BACKSTAGE_PASS, 10, 7, ItemType.BACKSTAGE_PASS) };
         GildedRose app = new GildedRose(items);
-        app.updateQuality();
+        app.simulateDay();
         assertThat(app.items[0].name).isEqualTo(BACKSTAGE_PASS);
         assertThat(app.items[0].quality).isEqualTo(9);
         assertThat(app.items[0].sellIn).isEqualTo(9);
@@ -32,7 +32,7 @@ class GildedRoseBackstagePassTest {
     void testBackstagePassSellByDateIn5() {
         Item[] items = new Item[] { new Item(BACKSTAGE_PASS, 5, 20, ItemType.BACKSTAGE_PASS) };
         GildedRose app = new GildedRose(items);
-        app.updateQuality();
+        app.simulateDay();
         assertThat(app.items[0].name).isEqualTo(BACKSTAGE_PASS);
         assertThat(app.items[0].quality).isEqualTo(23);
         assertThat(app.items[0].sellIn).isEqualTo(4);
@@ -42,7 +42,7 @@ class GildedRoseBackstagePassTest {
     void testBackstagePassSellByDateIsTomorrow() {
         Item[] items = new Item[] { new Item(BACKSTAGE_PASS, 1, 5, ItemType.BACKSTAGE_PASS) };
         GildedRose app = new GildedRose(items);
-        app.updateQuality();
+        app.simulateDay();
         assertThat(app.items[0].name).isEqualTo(BACKSTAGE_PASS);
         assertThat(app.items[0].quality).isEqualTo(8);
         assertThat(app.items[0].sellIn).isEqualTo(0);
@@ -52,7 +52,7 @@ class GildedRoseBackstagePassTest {
     void testBackstagePassSellByDateIsNow() {
         Item[] items = new Item[] { new Item(BACKSTAGE_PASS, 0, 5, ItemType.BACKSTAGE_PASS) };
         GildedRose app = new GildedRose(items);
-        app.updateQuality();
+        app.simulateDay();
         assertThat(app.items[0].name).isEqualTo(BACKSTAGE_PASS);
         assertThat(app.items[0].quality).isEqualTo(0);
         assertThat(app.items[0].sellIn).isEqualTo(-1);
@@ -62,7 +62,7 @@ class GildedRoseBackstagePassTest {
     void testBackstagePassByDatePassed() {
         Item[] items = new Item[] { new Item(BACKSTAGE_PASS, -1, 5, ItemType.BACKSTAGE_PASS) };
         GildedRose app = new GildedRose(items);
-        app.updateQuality();
+        app.simulateDay();
         assertThat(app.items[0].name).isEqualTo(BACKSTAGE_PASS);
         assertThat(app.items[0].quality).isEqualTo(0);
         assertThat(app.items[0].sellIn).isEqualTo(-2);

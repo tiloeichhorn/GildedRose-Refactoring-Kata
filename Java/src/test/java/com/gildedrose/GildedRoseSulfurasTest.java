@@ -12,7 +12,7 @@ class GildedRoseSulfurasTest {
     void testSulfuras() {
         Item[] items = new Item[] { new Item(SULFURAS_HAND_OF_RAGNAROS, 8, 10, ItemType.SULFURAS) };
         GildedRose app = new GildedRose(items);
-        app.updateQuality();
+        app.simulateDay();
         assertThat(app.items[0].name).isEqualTo(SULFURAS_HAND_OF_RAGNAROS);
         assertThat(app.items[0].quality).isEqualTo(10);
         assertThat(app.items[0].sellIn).isEqualTo(8);
@@ -22,7 +22,7 @@ class GildedRoseSulfurasTest {
     void testSulfurasNegativeQuality() {
         Item[] items = new Item[] { new Item(SULFURAS_HAND_OF_RAGNAROS, 8, -500, ItemType.SULFURAS) };
         GildedRose app = new GildedRose(items);
-        app.updateQuality();
+        app.simulateDay();
         assertThat(app.items[0].name).isEqualTo(SULFURAS_HAND_OF_RAGNAROS);
         assertThat(app.items[0].quality).isEqualTo(0);
         assertThat(app.items[0].sellIn).isEqualTo(8);
@@ -32,7 +32,7 @@ class GildedRoseSulfurasTest {
     void testSulfurasSellByDateIsNow() {
         Item[] items = new Item[] { new Item(SULFURAS_HAND_OF_RAGNAROS, 0, 50, ItemType.SULFURAS) };
         GildedRose app = new GildedRose(items);
-        app.updateQuality();
+        app.simulateDay();
         assertThat(app.items[0].name).isEqualTo(SULFURAS_HAND_OF_RAGNAROS);
         assertThat(app.items[0].quality).isEqualTo(50);
         assertThat(app.items[0].sellIn).isEqualTo(0);
@@ -42,7 +42,7 @@ class GildedRoseSulfurasTest {
     void testSulfurasSellByDatePassed() {
         Item[] items = new Item[] { new Item(SULFURAS_HAND_OF_RAGNAROS, -1, 20, ItemType.SULFURAS) };
         GildedRose app = new GildedRose(items);
-        app.updateQuality();
+        app.simulateDay();
         assertThat(app.items[0].name).isEqualTo(SULFURAS_HAND_OF_RAGNAROS);
         assertThat(app.items[0].quality).isEqualTo(20);
         assertThat(app.items[0].sellIn).isEqualTo(-1);
