@@ -1,5 +1,8 @@
 package com.gildedrose;
 
+import java.util.HashMap;
+import java.util.Map;
+
 class GildedRose {
 
     public static final int MAX_QUALITY = 50;
@@ -8,13 +11,18 @@ class GildedRose {
     public static final int FIVE_DAYS_THRESHOLD = 5;
     Item[] items;
 
+    private static final Map<ItemType, ItemDaySimulationStrategy> simulationStrategies  = new HashMap<ItemType, ItemDaySimulationStrategy>() {{
+        put(ItemType.SULFURAS, new SulfurasItemDaySimulationStrategy());
+    }};
+
     public GildedRose(Item[] items) {
         this.items = items;
     }
 
     public void updateQuality() {
         for (Item item : items) {
-            if (ItemType.SULFURAS.equals(item.itemType)) {
+            if (simulationStrategies.containsKey(item.itemType)) {
+                simulationStrategies.get(item.itemType).simulate(item);
                 continue;
             }
             if (!ItemType.AGED_BRIE.equals(item.itemType)
