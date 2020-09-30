@@ -10,7 +10,7 @@ class GildedRoseSulfurasTest {
 
     @Test
     void testSulfuras() {
-        Item[] items = new Item[] { new Item(SULFURAS_HAND_OF_RAGNAROS, 8, -500) };
+        Item[] items = new Item[] { new Item(SULFURAS_HAND_OF_RAGNAROS, 8, -500, ItemType.SULFURAS) };
         GildedRose app = new GildedRose(items);
         app.updateQuality();
         assertThat(app.items[0].name).isEqualTo(SULFURAS_HAND_OF_RAGNAROS);
@@ -20,7 +20,7 @@ class GildedRoseSulfurasTest {
 
     @Test
     void testSulfurasSellByDateIsNow() {
-        Item[] items = new Item[] { new Item(SULFURAS_HAND_OF_RAGNAROS, 0, 500) };
+        Item[] items = new Item[] { new Item(SULFURAS_HAND_OF_RAGNAROS, 0, 500, ItemType.SULFURAS) };
         GildedRose app = new GildedRose(items);
         app.updateQuality();
         assertThat(app.items[0].name).isEqualTo(SULFURAS_HAND_OF_RAGNAROS);
@@ -30,7 +30,7 @@ class GildedRoseSulfurasTest {
 
     @Test
     void testSulfurasSellByDatePassed() {
-        Item[] items = new Item[] { new Item(SULFURAS_HAND_OF_RAGNAROS, -1, 200) };
+        Item[] items = new Item[] { new Item(SULFURAS_HAND_OF_RAGNAROS, -1, 200, ItemType.SULFURAS) };
         GildedRose app = new GildedRose(items);
         app.updateQuality();
         assertThat(app.items[0].name).isEqualTo(SULFURAS_HAND_OF_RAGNAROS);

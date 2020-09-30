@@ -10,7 +10,7 @@ class GildedRoseAgedBrieTest {
 
     @Test
     void testAgedBrie() {
-        Item[] items = new Item[] { new Item(AGED_BRIE, 8, 5) };
+        Item[] items = new Item[] { new Item(AGED_BRIE, 8, 5, ItemType.AGED_BRIE) };
         GildedRose app = new GildedRose(items);
         app.updateQuality();
         assertThat(app.items[0].name).isEqualTo(AGED_BRIE);
@@ -20,7 +20,7 @@ class GildedRoseAgedBrieTest {
 
     @Test
     void testAgedBrieSellByDateIsNow() {
-        Item[] items = new Item[] { new Item(AGED_BRIE, 0, 5) };
+        Item[] items = new Item[] { new Item(AGED_BRIE, 0, 5, ItemType.AGED_BRIE) };
         GildedRose app = new GildedRose(items);
         app.updateQuality();
         assertThat(app.items[0].name).isEqualTo(AGED_BRIE);
@@ -30,7 +30,7 @@ class GildedRoseAgedBrieTest {
 
     @Test
     void testAgedBrieSellByDatePassed() {
-        Item[] items = new Item[] { new Item(AGED_BRIE, -1, 5) };
+        Item[] items = new Item[] { new Item(AGED_BRIE, -1, 5, ItemType.AGED_BRIE) };
         GildedRose app = new GildedRose(items);
         app.updateQuality();
         assertThat(app.items[0].name).isEqualTo(AGED_BRIE);

@@ -10,7 +10,7 @@ class GildedRoseStandardProductTest {
 
     @Test
     void testRandomStandardProduct() {
-        Item[] items = new Item[] { new Item(STANDARD_PRODUCT, 10, 5) };
+        Item[] items = new Item[] { new Item(STANDARD_PRODUCT, 10, 5, ItemType.STANDARD) };
         GildedRose app = new GildedRose(items);
         app.updateQuality();
         assertThat(app.items[0].name).isEqualTo(STANDARD_PRODUCT);
@@ -20,7 +20,7 @@ class GildedRoseStandardProductTest {
 
     @Test
     void testRandomStandardProductSellByDateIsNow() {
-        Item[] items = new Item[] { new Item(STANDARD_PRODUCT, 0, 4) };
+        Item[] items = new Item[] { new Item(STANDARD_PRODUCT, 0, 4, ItemType.STANDARD) };
         GildedRose app = new GildedRose(items);
         app.updateQuality();
         assertThat(app.items[0].name).isEqualTo(STANDARD_PRODUCT);
@@ -30,7 +30,7 @@ class GildedRoseStandardProductTest {
 
     @Test
     void testRandomStandardProductSellByDatePassed() {
-        Item[] items = new Item[] { new Item(STANDARD_PRODUCT, -5, 4) };
+        Item[] items = new Item[] { new Item(STANDARD_PRODUCT, -5, 4, ItemType.STANDARD) };
         GildedRose app = new GildedRose(items);
         app.updateQuality();
         assertThat(app.items[0].name).isEqualTo(STANDARD_PRODUCT);
