@@ -11,7 +11,7 @@ public class Item {
     public Item(String name, int sellIn, int quality, ItemType itemType) {
         this.name = name;
         this.sellIn = sellIn;
-        this.quality = Math.min(quality, 50);
+        this.quality = Math.max(0, Math.min(quality, 50));
         this.itemType = itemType;
     }
 

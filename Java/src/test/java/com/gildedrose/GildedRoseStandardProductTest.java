@@ -19,6 +19,16 @@ class GildedRoseStandardProductTest {
     }
 
     @Test
+    void testRandomStandardProductNegativeQuality() {
+        Item[] items = new Item[] { new Item(STANDARD_PRODUCT, 10, -5, ItemType.STANDARD) };
+        GildedRose app = new GildedRose(items);
+        app.updateQuality();
+        assertThat(app.items[0].name).isEqualTo(STANDARD_PRODUCT);
+        assertThat(app.items[0].quality).isEqualTo(0);
+        assertThat(app.items[0].sellIn).isEqualTo(9);
+    }
+
+    @Test
     void testRandomStandardProductQualityOver50() {
         Item[] items = new Item[] { new Item(STANDARD_PRODUCT, 10, 55, ItemType.STANDARD) };
         GildedRose app = new GildedRose(items);

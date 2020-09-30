@@ -10,11 +10,21 @@ class GildedRoseSulfurasTest {
 
     @Test
     void testSulfuras() {
+        Item[] items = new Item[] { new Item(SULFURAS_HAND_OF_RAGNAROS, 8, 10, ItemType.SULFURAS) };
+        GildedRose app = new GildedRose(items);
+        app.updateQuality();
+        assertThat(app.items[0].name).isEqualTo(SULFURAS_HAND_OF_RAGNAROS);
+        assertThat(app.items[0].quality).isEqualTo(10);
+        assertThat(app.items[0].sellIn).isEqualTo(8);
+    }
+
+    @Test
+    void testSulfurasNegativeQuality() {
         Item[] items = new Item[] { new Item(SULFURAS_HAND_OF_RAGNAROS, 8, -500, ItemType.SULFURAS) };
         GildedRose app = new GildedRose(items);
         app.updateQuality();
         assertThat(app.items[0].name).isEqualTo(SULFURAS_HAND_OF_RAGNAROS);
-        assertThat(app.items[0].quality).isEqualTo(-500);
+        assertThat(app.items[0].quality).isEqualTo(0);
         assertThat(app.items[0].sellIn).isEqualTo(8);
     }
 
