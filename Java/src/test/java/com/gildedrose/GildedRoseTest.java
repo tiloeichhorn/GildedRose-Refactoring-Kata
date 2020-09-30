@@ -1,17 +1,19 @@
 package com.gildedrose;
 
-import org.junit.jupiter.api.Test;
+import static org.assertj.core.api.Assertions.assertThat;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import org.junit.jupiter.api.Test;
 
 class GildedRoseTest {
 
     @Test
-    void foo() {
-        Item[] items = new Item[] { new Item("foo", 0, 0) };
+    void testRandomStandardProduct() {
+        Item[] items = new Item[] { new Item("foo", 10, 5) };
         GildedRose app = new GildedRose(items);
         app.updateQuality();
-        assertEquals("foo", app.items[0].name);
+        assertThat(app.items[0].name).isEqualTo("foo");
+        assertThat(app.items[0].quality).isEqualTo(4);
+        assertThat(app.items[0].sellIn).isEqualTo(9);
     }
 
 }
