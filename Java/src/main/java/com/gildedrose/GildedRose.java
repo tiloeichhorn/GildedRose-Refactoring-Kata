@@ -25,11 +25,11 @@ class GildedRose {
 
                     if (ItemType.BACKSTAGE_PASS.equals(item.itemType)) {
                         if (item.sellIn <= TEN_DAYS_THRESHOLD) {
-                            item.quality = Math.max(MAX_QUALITY, item.quality + 1);
+                            item.quality = Math.min(MAX_QUALITY, item.quality + 1);
                         }
 
                         if (item.sellIn <= FIVE_DAYS_THRESHOLD) {
-                            item.quality = Math.max(MAX_QUALITY, item.quality + 1);
+                            item.quality = Math.min(MAX_QUALITY, item.quality + 1);
                         }
                     }
                 }
@@ -39,17 +39,17 @@ class GildedRose {
                 item.sellIn = item.sellIn - 1;
             }
 
-            if (item.sellIn < MIN_QUALITY) {
+            if (item.sellIn < 0) {
                 if (!ItemType.AGED_BRIE.equals(item.itemType)) {
                     if (!ItemType.BACKSTAGE_PASS.equals(item.itemType)) {
                         if (!ItemType.SULFURAS.equals(item.itemType)) {
-                            item.quality = Math.min(MIN_QUALITY, item.quality - 1);
+                            item.quality = Math.max(MIN_QUALITY, item.quality - 1);
                         }
                     } else {
                         item.quality = MIN_QUALITY;
                     }
                 } else {
-                    item.quality = Math.max(MAX_QUALITY, item.quality + 1);
+                    item.quality = Math.min(MAX_QUALITY, item.quality + 1);
                 }
             }
         }
