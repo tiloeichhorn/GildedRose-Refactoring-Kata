@@ -14,6 +14,7 @@ class GildedRose {
     private static final Map<ItemType, ItemDaySimulationStrategy> simulationStrategies = new HashMap<ItemType, ItemDaySimulationStrategy>() {{
         put(ItemType.SULFURAS, new SulfurasItemDaySimulationStrategy());
         put(ItemType.STANDARD, new StandardItemDaySimulationStrategy());
+        put(ItemType.AGED_BRIE, new AgedBrieItemDaySimulationStrategy());
     }};
 
     public GildedRose(Item[] items) {
@@ -43,9 +44,6 @@ class GildedRose {
             item.sellIn = item.sellIn - 1;
 
             if (item.sellIn < 0) {
-                if (ItemType.AGED_BRIE.equals(item.itemType)) {
-                    item.quality = Math.min(MAX_QUALITY, item.quality + 1);
-                }
                 if (ItemType.BACKSTAGE_PASS.equals(item.itemType)) {
                     item.quality = MIN_QUALITY;
                 }
